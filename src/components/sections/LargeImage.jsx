@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { largeImage } from '../../data/content'
-import DitheredImage from '../ui/DitheredImage'
 import Frame from '../ui/Frame'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -69,19 +68,16 @@ export default function LargeImage() {
           className="absolute inset-0 will-change-transform"
           style={{ background: 'var(--theme-contrast)', isolation: 'isolate' }}
         >
-          <DitheredImage
-            src={largeImage.src}
+          <img
+            src={largeImage.ditheredSrc}
             alt={largeImage.alt}
-            cell={3}
-            maxWidth={1600}
-            contrast={1.35}
-            brightness={0.88}
-            className="h-full w-full"
+            draggable="false"
+            className="h-full w-full object-cover"
             style={{
               aspectRatio: 'auto',
               mixBlendMode: 'multiply',
               // source ratio matches the band, so this is a 1:1 fit — no crop
-              backgroundPosition: 'center',
+              objectPosition: 'center',
             }}
           />
         </div>
