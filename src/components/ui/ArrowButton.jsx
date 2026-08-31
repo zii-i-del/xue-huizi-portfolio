@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ArrowGlyph from './ArrowGlyph'
 
 /**
@@ -21,15 +22,24 @@ export default function ArrowButton({
   height = '6.3888888889vw',
   label,
 }) {
+  const [hovered, setHovered] = useState(false)
+  const [hasInteracted, setHasInteracted] = useState(false)
+
   return (
     <button
       onClick={onClick}
+      onMouseEnter={() => {
+        setHasInteracted(true)
+        setHovered(true)
+      }}
+      onMouseLeave={() => setHovered(false)}
       aria-label={label}
-      className={`arrow-btn group ${direction === 'left' ? 'left' : ''} ${className}`}
+      className={`arrow-btn group ${direction === 'left' ? 'left' : ''} ${hovered ? 'is-hovered' : ''} ${hasInteracted ? 'has-interacted' : ''} ${className}`}
       style={{ width, height, minWidth: 56, minHeight: 46 }}
     >
       <div>
         <Arrow className="arrow-in" />
+        <Arrow className="arrow-bridge" />
         <Arrow className="arrow-out" />
       </div>
     </button>
