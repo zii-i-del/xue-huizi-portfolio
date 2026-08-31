@@ -728,8 +728,8 @@ export const closingMarquee = [
 export const largeImage = {
   // Pre-cropped from cat.jpg: the top 37% of the original is blank wall, so the
   // band would have wasted a third of its height. This derivative is 1706×806.
-  src: '/images/cat-band.jpg',
-  ditheredSrc: '/images/cat-band-dithered.png',
+  src: './images/cat-band.jpg',
+  ditheredSrc: './images/cat-band-dithered.png',
   alt: '薛惠姊的猫',
   ratio: '2.117 / 1',
   caption: 'CO-PILOT · 首席监督员',
