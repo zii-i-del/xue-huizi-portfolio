@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#ead9e3"/><rect x="70" y="80" width="660" height="840" rx="38" fill="#fff"/>
+  <rect x="112" y="132" width="300" height="32" rx="16" fill="#242124"/><rect x="112" y="202" width="576" height="330" rx="28" fill="#d99abd"/>
+  <circle cx="190" cy="620" r="76" fill="#242124"/><rect x="294" y="570" width="394" height="28" rx="14" fill="#8d7a84"/><rect x="294" y="622" width="318" height="20" rx="10" fill="#d2c4cb"/>
+  <rect x="112" y="744" width="178" height="110" rx="22" fill="#242124"/><rect x="312" y="744" width="178" height="110" rx="22" fill="#d99abd"/><rect x="510" y="744" width="178" height="110" rx="22" fill="#ddd4d8"/>
+  <text x="112" y="895" font-family="monospace" font-size="28" letter-spacing="8" fill="#242124">PLACEHOLDER 01</text>
+</svg>

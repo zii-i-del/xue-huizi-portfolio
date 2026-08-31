@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="991" viewBox="0 0 700 991">
+  <rect width="700" height="991" fill="#eee9ec"/>
+  <path d="M0 0h700v170H0zM0 821h700v170H0z" fill="#050505"/>
+  <path d="M350 215 620 496 350 777 80 496z" fill="#d7a8c9"/>
+  <path d="M350 330 510 496 350 662 190 496z" fill="#050505"/>
+  <path d="M350 425 420 496 350 567 280 496z" fill="#eee9ec"/>
+  <text x="54" y="105" fill="#eee9ec" font-family="monospace" font-size="34" letter-spacing="8">PLACEHOLDER</text>
+  <text x="350" y="922" fill="#d7a8c9" font-family="monospace" font-size="72" text-anchor="middle">04</text>
+</svg>

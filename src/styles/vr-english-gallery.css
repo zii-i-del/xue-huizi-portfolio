@@ -1,0 +1,218 @@
+html.vr-english-document,
+body.vr-english-document {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #f7f5ec;
+  overscroll-behavior: none;
+}
+
+body.vr-english-document #root {
+  width: 100%;
+  height: 100%;
+}
+
+.vr-wobbly-page {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  outline: none;
+  background:
+    radial-gradient(circle at 16% 18%, rgb(220 185 247 / 30%), transparent 34%),
+    radial-gradient(circle at 84% 82%, rgb(167 238 205 / 27%), transparent 32%),
+    radial-gradient(circle at 76% 16%, rgb(248 184 206 / 22%), transparent 28%),
+    #f7f5ec;
+  color: #2d2148;
+  touch-action: none;
+  user-select: none;
+}
+
+.vr-wobbly-page::before {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgb(45 33 72 / 4%) 1px, transparent 1px), linear-gradient(90deg, rgb(45 33 72 / 4%) 1px, transparent 1px);
+  background-size: 36px 36px;
+  content: '';
+  pointer-events: none;
+}
+
+.vr-wobbly-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: clamp(70px, 6.4vw, 108px);
+  padding: 0 clamp(18px, 2vw, 38px);
+  pointer-events: none;
+}
+
+.vr-wobbly-header h1 {
+  grid-column: 2;
+  margin: 0;
+  font-family: var(--font-owners);
+  font-size: clamp(18px, 1.35vw, 26px);
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.vr-wobbly-header button {
+  grid-column: 1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: .7em;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #70677e;
+  font-family: var(--font-owners);
+  font-size: clamp(13px, .9vw, 17px);
+  letter-spacing: .04em;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color .18s ease, transform .18s ease;
+}
+
+.vr-wobbly-header button:hover,
+.vr-wobbly-header button:focus-visible {
+  color: #a15fc7;
+  transform: translateX(-4px);
+}
+
+.vr-wobbly-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(43vw, calc((100svh - 150px) * 7016 / 9924), 670px);
+  aspect-ratio: 7016 / 9924;
+  transform: translate(-50%, -50%);
+}
+
+.vr-wobbly-slide {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.vr-wobbly-slide svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.vr-wobbly-slide-outline {
+  fill: none;
+  stroke: rgb(139 91 173 / 55%);
+  stroke-width: .16;
+  vector-effect: non-scaling-stroke;
+}
+
+.vr-wobbly-footer {
+  position: absolute;
+  right: 10vw;
+  bottom: 30px;
+  left: 10vw;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  color: #70677e;
+  font-family: var(--font-stardust);
+  font-size: 11px;
+  letter-spacing: .16em;
+}
+
+.vr-wobbly-progress {
+  height: 1px;
+  overflow: hidden;
+  background: rgb(92 72 117 / 20%);
+}
+
+.vr-wobbly-progress i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #a15fc7;
+  transform-origin: left center;
+  transition: transform .5s cubic-bezier(.8, 0, .2, 1);
+}
+
+.vr-wobbly-hint {
+  position: absolute;
+  right: 0;
+  bottom: 49px;
+  left: 0;
+  z-index: 10;
+  margin: 0;
+  color: #81778d;
+  font-family: var(--font-stardust);
+  font-size: clamp(10px, .7vw, 13px);
+  letter-spacing: .2em;
+  text-align: center;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .vr-wobbly-header {
+    grid-template-columns: auto 1fr;
+    min-height: 76px;
+    padding: 0 18px;
+  }
+
+  .vr-wobbly-header h1 {
+    grid-column: 2;
+    justify-self: end;
+    font-size: 15px;
+  }
+
+  .vr-wobbly-header button {
+    font-size: 0;
+  }
+
+  .vr-wobbly-header button span:first-child {
+    font-size: 22px;
+  }
+
+  .vr-wobbly-stage {
+    width: min(78vw, calc((100svh - 130px) * 7016 / 9924));
+  }
+
+  .vr-wobbly-footer {
+    right: 7vw;
+    bottom: 22px;
+    left: 7vw;
+  }
+
+  .vr-wobbly-hint {
+    bottom: 42px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vr-wobbly-slide-outline {
+    display: none;
+  }
+
+  .vr-wobbly-header button {
+    transition: color .18s ease;
+  }
+
+  .vr-wobbly-header button:hover,
+  .vr-wobbly-header button:focus-visible {
+    transform: none;
+  }
+}
