@@ -4,11 +4,15 @@ import * as THREE from 'three'
 
 const GALLERY_ITEMS = Array.from({ length: 6 }, (_, index) => ({
   id: String(index + 1).padStart(2, '0'),
-  image: `./images/${index + 1}.png`,
-  aspect: 3840 / 5434,
+  image: `./images/${index + 1}.webp`,
+  aspect: 1600 / 2264,
 }))
 
 const LOOP_ITEMS = [...GALLERY_ITEMS, ...GALLERY_ITEMS]
+// At rest, loop indexes 5, 6 and 7 are the visible left, centre and right cards.
+// Start those texture requests first, then work outwards so the opening trio
+// does not wait for off-screen artwork.
+const PRIORITIZED_LOOP_INDEXES = [5, 6, 7, 4, 8, 3, 9, 2, 10, 1, 11, 0]
 
 function createNumberTexture(id) {
   const canvas = document.createElement('canvas')
@@ -151,18 +155,22 @@ function GalleryScene({ motion, reducedMotion, spacingRef }) {
 
   return (
     <>
-      {LOOP_ITEMS.map((item, index) => (
-        <GalleryCard
-          key={`${item.id}-${index}`}
-          dimensions={dimensions}
-          index={index}
-          item={item}
-          motion={motion}
-          reducedMotion={reducedMotion}
-          spacingRef={spacingRef}
-          total={LOOP_ITEMS.length}
-        />
-      ))}
+      {PRIORITIZED_LOOP_INDEXES.map((index) => {
+        const item = LOOP_ITEMS[index]
+        return (
+          <Suspense key={`${item.id}-${index}`} fallback={null}>
+            <GalleryCard
+              dimensions={dimensions}
+              index={index}
+              item={item}
+              motion={motion}
+              reducedMotion={reducedMotion}
+              spacingRef={spacingRef}
+              total={LOOP_ITEMS.length}
+            />
+          </Suspense>
+        )
+      })}
     </>
   )
 }
@@ -172,7 +180,11 @@ function FallbackGallery() {
     <div className="jidu-gallery-fallback" aria-label="集度作品占位图画廊">
       {GALLERY_ITEMS.map((item) => (
         <figure key={item.id}>
-          <img src={item.image} alt={`集度视觉设计 ${item.id}`} />
+          <img
+            src={item.image}
+            alt={`集度视觉设计 ${item.id}`}
+            loading={Number(item.id) <= 3 ? 'eager' : 'lazy'}
+          />
           <figcaption>{item.id}</figcaption>
         </figure>
       ))}
@@ -285,9 +297,7 @@ export default function JiduGalleryPage() {
               gl.domElement.addEventListener('webglcontextlost', () => setWebGLAvailable(false), { once: true })
             }}
           >
-            <Suspense fallback={null}>
-              <GalleryScene motion={motionRef.current} reducedMotion={reducedMotion} spacingRef={spacingRef} />
-            </Suspense>
+            <GalleryScene motion={motionRef.current} reducedMotion={reducedMotion} spacingRef={spacingRef} />
           </Canvas>
         </div>
       ) : (
