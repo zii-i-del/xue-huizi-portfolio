@@ -1183,8 +1183,8 @@
   row-gap: clamp(8px, 0.65vw, 14px);
   color: var(--theme-contrast);
   font-family: var(--font-display);
-  /* Keep the 1440px reference scale on ultra-wide desktops. */
-  font-size: clamp(64px, 10.7vw, 154px);
+  /* Preserve the original desktop scale while capping only extreme widths. */
+  font-size: clamp(64px, 10.7vw, 176px);
   line-height: 1;
   letter-spacing: 0;
   text-align: center;
@@ -2229,19 +2229,20 @@
   }
 }
 
-/* Keep ultra-wide desktops visually anchored to the 1440px reference. */
+/* Keep ultra-wide desktops bounded without shrinking the original desktop
+   type scale (the 1440px and 1920px compositions remain unchanged). */
 @media (min-width: 1440px) {
   :root {
-    --type-display-marquee: clamp(92px, 10.8333333333vw, 156px);
-    --type-display-section: clamp(44px, 5.5555555556vw, 80px);
-    --type-display-card: clamp(30px, 2.2222222222vw, 32px);
-    --type-body: clamp(14px, 1vw, 14.4px);
-    --type-micro: clamp(10px, 0.8333333333vw, 12px);
-    --type-section-heading: clamp(38px, 3.3vw, 47.5px);
-    --type-secondary: clamp(14px, 1vw, 14.4px);
-    --type-section-title: clamp(38px, 3.3vw, 47.5px);
+    --type-display-marquee: clamp(92px, 10.8333333333vw, 208px);
+    --type-display-section: clamp(44px, 5.5555555556vw, 106px);
+    --type-display-card: clamp(30px, 2.2222222222vw, 44px);
+    --type-body: clamp(14px, 1vw, 19px);
+    --type-micro: clamp(10px, 0.8333333333vw, 15px);
+    --type-section-heading: clamp(38px, 3.3vw, 64px);
+    --type-secondary: clamp(14px, 1vw, 18px);
+    --type-section-title: clamp(38px, 3.3vw, 64px);
     --type-item-title: clamp(52px, 5.5vw, 79.2px);
-    --type-item-meta: clamp(14px, 1vw, 14.4px);
-    --case-row-height: clamp(250px, 17.3611111111vw, 250px);
+    --type-item-meta: clamp(14px, 1vw, 18px);
+    --case-row-height: clamp(250px, 17.3611111111vw, 334px);
   }
 }
