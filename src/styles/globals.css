@@ -2179,3 +2179,51 @@
     width: 1.8vw;
   }
 }
+
+/* Desktop consistency guardrails -----------------------------------------
+   The original layout is tuned against a 1440px desktop. Keep that exact
+   reference size, while preventing raw vw values from growing without a
+   limit on ultra-wide monitors. These caps intentionally do not affect the
+   mobile breakpoints above. */
+@media (min-width: 1024px) {
+  :root {
+    --layout-margin: clamp(12px, 1.1111111111vw, 16px);
+    --layout-columns-gap: clamp(12px, 1.1111111111vw, 16px);
+    --header-height: clamp(70px, 6.8055555556vw, 98px);
+  }
+
+  .display-xl,
+  .display-xl.cjk {
+    font-size: clamp(100px, 10.8333333333vw, 156px);
+  }
+
+  .display-lg,
+  .display-lg.cjk {
+    font-size: clamp(80px, 9.5vw, 137px);
+  }
+
+  .display-md,
+  .display-md.cjk {
+    font-size: clamp(56px, 5.5vw, 79px);
+  }
+
+  .overview-stage {
+    --overview-track-height: clamp(760px, 76.3888888889vw, 1100px);
+  }
+
+  .overview-card {
+    width: clamp(412px, 40.2777777778vw, 580px);
+  }
+
+  .overview-card__controls .arrow-btn {
+    width: clamp(28px, 2.3vw, 34px);
+  }
+
+  .site-footer__logo {
+    height: clamp(180px, 20.1388888889vw, 290px);
+  }
+
+  .footer-wordmark__glyph {
+    font-size: clamp(150px, 15.4vw, 222px);
+  }
+}
