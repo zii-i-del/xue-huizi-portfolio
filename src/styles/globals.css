@@ -2227,3 +2227,20 @@
     font-size: clamp(150px, 15.4vw, 222px);
   }
 }
+
+/* Keep ultra-wide desktops visually anchored to the 1440px reference. */
+@media (min-width: 1440px) {
+  :root {
+    --type-display-marquee: clamp(92px, 10.8333333333vw, 156px);
+    --type-display-section: clamp(44px, 5.5555555556vw, 80px);
+    --type-display-card: clamp(30px, 2.2222222222vw, 32px);
+    --type-body: clamp(14px, 1vw, 14.4px);
+    --type-micro: clamp(10px, 0.8333333333vw, 12px);
+    --type-section-heading: clamp(38px, 3.3vw, 47.5px);
+    --type-secondary: clamp(14px, 1vw, 14.4px);
+    --type-section-title: clamp(38px, 3.3vw, 47.5px);
+    --type-item-title: clamp(52px, 5.5vw, 79.2px);
+    --type-item-meta: clamp(14px, 1vw, 14.4px);
+    --case-row-height: clamp(250px, 17.3611111111vw, 250px);
+  }
+}
