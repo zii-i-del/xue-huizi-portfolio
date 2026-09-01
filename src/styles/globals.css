@@ -1183,7 +1183,8 @@
   row-gap: clamp(8px, 0.65vw, 14px);
   color: var(--theme-contrast);
   font-family: var(--font-display);
-  font-size: clamp(64px, 10.7vw, 176px);
+  /* Keep the 1440px reference scale on ultra-wide desktops. */
+  font-size: clamp(64px, 10.7vw, 154px);
   line-height: 1;
   letter-spacing: 0;
   text-align: center;
